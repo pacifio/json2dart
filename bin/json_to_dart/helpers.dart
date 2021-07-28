@@ -54,7 +54,7 @@ String camelCase(String text) {
   String capitalize(Match m) =>
       m[0].substring(0, 1).toUpperCase() + m[0].substring(1);
   String skip(String s) => "";
-  return text.splitMapJoin(new RegExp(r'[a-zA-Z0-9]+'),
+  return text.splitMapJoin(RegExp(r'[a-zA-Z0-9]+'),
       onMatch: capitalize, onNonMatch: skip);
 }
 
@@ -109,13 +109,13 @@ WithWarning<Map> mergeObj(Map obj, Map other, String path) {
       }
     }
   });
-  return new WithWarning(clone, warnings);
+  return WithWarning(clone, warnings);
 }
 
 WithWarning<Map> mergeObjectList(List<dynamic> list, String path,
     [int idx = -1]) {
   List<Warning> warnings = <Warning>[];
-  Map obj = new Map();
+  Map obj = Map();
   for (var i = 0; i < list.length; i++) {
     final toMerge = list[i];
     if (toMerge is Map) {
@@ -174,7 +174,7 @@ WithWarning<Map> mergeObjectList(List<dynamic> list, String path,
       });
     }
   }
-  return new WithWarning(obj, warnings);
+  return WithWarning(obj, warnings);
 }
 
 isPrimitiveType(String typeName) {
@@ -188,7 +188,7 @@ isPrimitiveType(String typeName) {
 String fixFieldName(String name,
     {TypeDefinition typeDef, bool privateField = false}) {
   var properName = name;
-  if (name.startsWith('_') || name.startsWith(new RegExp(r'[0-9]'))) {
+  if (name.startsWith('_') || name.startsWith(RegExp(r'[0-9]'))) {
     final firstCharType = typeDef.name.substring(0, 1).toLowerCase();
     properName = '$firstCharType$name';
   }

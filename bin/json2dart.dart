@@ -46,9 +46,18 @@ void main(List<String> arguments) async {
       help: 'Method for http request , defaults to GET',
       abbr: 'm',
       defaultsTo: 'GET');
+  parser.addFlag('null-safe',
+      negatable: false,
+      defaultsTo: false,
+      help:
+          'Add this flag if you want to generate null safe code , by default we will generate without null safety !');
 
   try {
     final results = parser.parse(arguments);
+
+    if (results['null-safe']) {
+      print('You have turned on null safety !');
+    }
 
     if (results['api'] != null) {
       try {
@@ -114,8 +123,10 @@ void main(List<String> arguments) async {
                 try {
                   final stringify = jsonEncode(finalData);
                   final classGenerator = ModelGenerator(name);
-                  final dartCode =
-                      classGenerator.generateDartClasses(stringify);
+                  final dartCode = classGenerator.generateDartClasses(
+                    stringify,
+                    nullSafe: results['null-safe'],
+                  );
 
                   try {
                     var file = File('$name.dart');
@@ -128,7 +139,9 @@ void main(List<String> arguments) async {
                   } catch (_) {
                     quit('Could not write to file');
                   }
-                } catch (_) {
+                } catch (e) {
+                  print("\n");
+                  print(e);
                   quit('Could not generate models !');
                 }
               } else {

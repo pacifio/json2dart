@@ -1,0 +1,1 @@
+dart compile exe ./json2dart.dart -o ../build/json2dart && dart compile exe ./json2dart.dart -o ../build/json2dart.exe

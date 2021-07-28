@@ -10,6 +10,12 @@ Download the project and in `/build` foolder we have excutables for windows and 
 
 `json2dart -u https://reqres.in/api/users -m get -e data -n Example`
 
+## Null safety
+
+To turn on null safe code generation , add the flag `--null-safe` , Example :
+
+`json2dart -u https://reqres.in/api/users -m get -n Example --null-safe`
+
 ## Options
 
 ```
@@ -32,6 +38,6 @@ Download the project and in `/build` foolder we have excutables for windows and 
 
 ## Upcoming plans
 
-- [ ] Null safety support
+- [x] Null safety support
 - [ ] Private memmbers option
 - [ ] Option to load json from a file
