@@ -1,10 +1,13 @@
-name: json2dart
+name: json2dartc
 description: A CLI tool to help generate dart classes from json returned from API
-version: 1.1.0
+version: 1.0.0
 homepage: https://www.github.com/pacifio/json2dart
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
+
+executables:
+  json2dartc:
 
 dependencies:
   json_ast: ^1.0.5

@@ -1,20 +1,28 @@
 ## Json 2 Dart Command line utility
 
+## Important note
+
+There is already a package called `json2dart` so this package will be called `json2dartc` !
+
 <img src="./media/example.gif" width="600">
 
 This project was made using [javiercbk's json_to_dart package](https://github.com/javiercbk/json_to_dart) ! This CLI was made to directly convert JSON stuctures into Dart classes . I personally don't like build runners and json serializers so I made this for my workflow . Feel free to open issues and submit PRs .
 
 ## How to use
 
-Download the project and in `/build` foolder we have excutables for windows and linux / darwin systems . Add this folder to system PATH . Then in your terminal
+Install this via `pub`
 
-`json2dart -u https://reqres.in/api/users -m get -e data -n Example`
+`pub global activate json2dartc`
+
+## Example
+
+`json2dartc -u https://reqres.in/api/users -m get -e data -n Example`
 
 ## Null safety
 
 To turn on null safe code generation , add the flag `--null-safe` , Example :
 
-`json2dart -u https://reqres.in/api/users -m get -n Example --null-safe`
+`json2dartc -u https://reqres.in/api/users -m get -n Example --null-safe`
 
 ## Options
 
@@ -39,5 +47,6 @@ To turn on null safe code generation , add the flag `--null-safe` , Example :
 ## Upcoming plans
 
 - [x] Null safety support
+- [ ] Tool itself written with null safety
 - [ ] Private memmbers option
 - [ ] Option to load json from a file
